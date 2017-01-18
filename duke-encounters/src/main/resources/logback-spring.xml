@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <springProfile name="development">
+        <logger name="org.springframework" level="WARN" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+        <logger name="org.hibernate" level="WARN" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+        <logger name="org.thymeleaf" level="WARN" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+        <logger name="de.dominikschadow" level="DEBUG" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+    </springProfile>
+
+    <springProfile name="production">
+        <logger name="org.springframework" level="ERROR" additivity="false">
+            <appender-ref ref="Boxfuse-CloudwatchLogs"/>
+        </logger>
+        <logger name="org.hibernate" level="ERROR" additivity="false">
+            <appender-ref ref="Boxfuse-CloudwatchLogs"/>
+        </logger>
+        <logger name="org.thymeleaf" level="ERROR" additivity="false">
+            <appender-ref ref="Boxfuse-CloudwatchLogs"/>
+        </logger>
+        <logger name="de.dominikschadow" level="INFO" additivity="false">
+            <appender-ref ref="Boxfuse-CloudwatchLogs"/>
+        </logger>
+    </springProfile>
+
+    <appender name="Boxfuse-CloudwatchLogs" class="com.boxfuse.cloudwatchlogs.logback.CloudwatchLogsLogbackAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d %-5level %marker [%thread] %logger : %msg%n</pattern>
+        </layout>
+    </appender>
+</configuration>

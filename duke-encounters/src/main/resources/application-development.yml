@@ -16,13 +16,3 @@ security:
 info:
   application:
     env: Development
-
-# Logging
-logging:
-  file: ${sys:user.home}/duke-encounters.log
-  level:
-    root: INFO
-    org.springframework: WARN
-    org.springframework.security: INFO
-    org.hibernate: WARN
-    org.thymeleaf: WARN

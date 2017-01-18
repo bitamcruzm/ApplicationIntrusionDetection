@@ -91,6 +91,10 @@
             <groupId>org.owasp</groupId>
             <artifactId>security-logging-logback</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.boxfuse.cloudwatchlogs</groupId>
+            <artifactId>cloudwatchlogs-java-appender</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.h2database</groupId>
